@@ -1,0 +1,21 @@
+import pandas as pd
+import numpy as np
+
+# Create DataFrame with random numeric data
+data = np.random.rand(50, 3)  # 50 rows, 3 columns
+df = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+
+# Replace 10% of values with null values
+num_nulls = int(0.1 * df.size)
+null_indices = np.random.choice(df.size, num_nulls, replace=False)
+df_values = df.values.flatten()
+df_values[null_indices] = np.nan
+df = pd.DataFrame(df_values.reshape(df.shape), columns=df.columns)
+
+# Sort the DataFrame based on the first column
+df_sorted = df.sort_values(by='Column1')
+
+print("Original DataFrame:")
+print(df)
+print("\nSorted DataFrame based on the first column:")
+print(df_sorted)
