@@ -1,0 +1,19 @@
+import pandas as pd
+
+# Import attendance data from Excel files into separate DataFrames
+file1 = 'workshop1_attendance.xlsx'
+file2 = 'workshop2_attendance.xlsx'
+
+df1 = pd.read_excel(file1)
+df2 = pd.read_excel(file2)
+
+# Merge the two DataFrames row-wise
+merged_df = pd.concat([df1, df2])
+
+# Set 'Name' and 'Date' columns as multi-row indexes
+merged_df.set_index(['Name', 'Date'], inplace=True)
+
+# Generate descriptive statistics for the hierarchical DataFrame
+statistics = merged_df.describe()
+
+print(statistics)
