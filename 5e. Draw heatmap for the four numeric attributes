@@ -1,0 +1,16 @@
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load Iris dataset
+iris = load_iris()
+iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+
+# e. Draw heatmap for the four numeric attributes
+plt.figure(figsize=(10, 6))
+heatmap = sns.heatmap(iris_df.corr(), annot=True, cmap="coolwarm", linewidths=0.5)
+plt.title("Heatmap for the four numeric attributes of Iris dataset")
+plt.xlabel("Attributes")
+plt.ylabel("Attributes")
+plt.show()
