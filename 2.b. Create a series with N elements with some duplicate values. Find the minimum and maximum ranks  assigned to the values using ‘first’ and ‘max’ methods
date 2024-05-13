@@ -1,0 +1,19 @@
+import pandas as pd
+
+series_b = pd.Series([3, 1, 5, 2, 4, 3, 5, 2, 5])
+
+# Find minimum ranks using 'first' method
+min_ranks = series_b.rank(method='first')
+min_rank_min = min_ranks.min()
+min_rank_max = min_ranks.max()
+print("\nMinimum ranks (assigned using 'first' method):\n", min_ranks)
+print("Minimum rank:", min_rank_min)
+print("Maximum rank:", min_rank_max)
+
+# Find maximum ranks using 'max' method
+max_ranks = series_b.rank(method='max')
+max_rank_min = max_ranks.min()
+max_rank_max = max_ranks.max()
+print("\nMaximum ranks (assigned using 'max' method):\n", max_ranks)
+print("Minimum rank:", max_rank_min)
+print("Maximum rank:", max_rank_max)
