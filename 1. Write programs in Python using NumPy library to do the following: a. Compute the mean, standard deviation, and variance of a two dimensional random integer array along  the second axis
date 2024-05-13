@@ -1,0 +1,19 @@
+import numpy as np
+
+# Generate a random 2D array of integers
+random_array = np.random.randint(0, 100, size=(3, 5))  # Example 3x5 array of random integers
+print("Random Array:")
+print(random_array)
+
+# Compute the mean along the second axis
+mean = np.mean(random_array, axis=1)
+
+# Compute the standard deviation along the second axis
+std_dev = np.std(random_array, axis=1)
+
+# Compute the variance along the second axis
+variance = np.var(random_array, axis=1)
+
+print("\nMean along the second axis:", mean)
+print("Standard deviation along the second axis:", std_dev)
+print("Variance along the second axis:", variance)
