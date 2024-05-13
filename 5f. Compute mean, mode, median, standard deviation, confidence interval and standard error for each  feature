@@ -1,0 +1,63 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from scipy import stats
+
+# Load the Iris dataset
+iris = load_iris()
+
+# Create a DataFrame from the dataset
+iris_df = pd.DataFrame(data= np.c_[iris['data'], iris['target']],
+                     columns= iris['feature_names'] + ['target'])
+
+# Compute mean, mode, median, standard deviation for each feature
+summary_stats = iris_df.describe()
+
+# Compute mode separately as describe() doesn't provide mode
+mode = iris_df.mode().iloc[0]
+
+# Compute standard error for each feature
+std_err = iris_df.sem()
+
+# Compute confidence interval for each feature
+confidence_interval = iris_df.apply(lambda x: stats.t.interval(0.95, len(x)-1, loc=np.mean(x), scale=stats.sem(x)))
+
+# Plotting
+plt.figure(figsize=(12, 8))
+
+# Plot mean values
+sns.barplot(x=summary_stats.columns[:-1], y=summary_stats.loc['mean'][:-1], color='blue', alpha=0.5, label='Mean')
+
+# Plot median values
+sns.barplot(x=summary_stats.columns[:-1], y=summary_stats.loc['50%'][:-1], color='green', alpha=0.5, label='Median')
+
+# Plot standard deviation as error bars
+plt.errorbar(x=np.arange(len(summary_stats.columns[:-1])), y=summary_stats.loc['mean'][:-1], yerr=summary_stats.loc['std'][:-1], fmt='none', color='red', label='Standard Deviation')
+
+# Labels and legend
+plt.xlabel('Features')
+plt.ylabel('Values')
+plt.title('Summary Statistics for Iris Dataset Features')
+plt.xticks(np.arange(len(summary_stats.columns[:-1])), summary_stats.columns[:-1], rotation=45)
+plt.legend()
+
+# Show plot
+plt.show()
+
+# Display summary statistics
+print("Summary Statistics for Iris Dataset Features:")
+print(summary_stats)
+
+# Display mode
+print("\nMode for each feature:")
+print(mode)
+
+# Display standard error
+print("\nStandard Error for each feature:")
+print(std_err)
+
+# Display confidence interval
+print("\nConfidence Interval for each feature:")
+print(confidence_interval)
