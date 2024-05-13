@@ -1,0 +1,19 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the Titanic dataset
+titanic_data = pd.read_csv("titanic.csv")
+
+# Group the data by passenger class and count the number of survivors in each class
+survivors_by_class = titanic_data.groupby('Pclass')['Survived'].sum()
+
+# Plot the comparison using a bar plot
+survivors_by_class.plot(kind='bar', color='skyblue', alpha=0.7)
+
+# Set the title and labels
+plt.title('Number of Survivors by Passenger Class')
+plt.xlabel('Passenger Class')
+plt.ylabel('Number of Survivors')
+
+# Show the plot
+plt.show()
