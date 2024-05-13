@@ -1,0 +1,18 @@
+import numpy as np
+
+# Create two random arrays of size 10
+Array1 = np.random.rand(10)
+Array2 = np.random.rand(10)
+
+# Find the sum of the first half of both arrays
+sum_first_half_Array1 = np.sum(Array1[:5])
+sum_first_half_Array2 = np.sum(Array2[:5])
+
+# Find the product of the second half of both arrays
+product_second_half_Array1 = np.prod(Array1[5:])
+product_second_half_Array2 = np.prod(Array2[5:])
+
+print("Sum of the first half of Array1:", sum_first_half_Array1)
+print("Sum of the first half of Array2:", sum_first_half_Array2)
+print("Product of the second half of Array1:", product_second_half_Array1)
+print("Product of the second half of Array2:", product_second_half_Array2)
