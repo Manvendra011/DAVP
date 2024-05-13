@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with 3 columns and 50 rows filled with random numeric data
+data = np.random.rand(50, 3)
+df = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+
+# Generate random indices to replace 10% of the values with NaN
+num_rows = df.shape[0]
+num_cols = df.shape[1]
+num_null_values = int(0.1 * num_rows * num_cols)
+indices_to_replace = np.random.choice(range(num_rows), num_null_values, replace=False)
+for idx in indices_to_replace:
+    col_idx = np.random.choice(range(num_cols))
+    df.iloc[idx, col_idx] = np.nan
+
+# Find correlation between first and second column
+correlation_first_second = df['Column1'].corr(df['Column2'])
+
+# Find covariance between second and third column
+covariance_second_third = df['Column2'].cov(df['Column3'])
+
+print("Correlation between first and second column:", correlation_first_second)
+print("Covariance between second and third column:", covariance_second_third)
