@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Read the Excel files into DataFrames (replace 'workshop1.xlsx' and 'workshop2.xlsx' with your file paths)
+df_workshop1 = pd.read_excel("/content/workshop1.xlsx")
+df_workshop2 = pd.read_excel("/content/workshop2.xlsx")
+
+# Merge the two DataFrames based on the 'Name' column
+merged_df = pd.merge(df_workshop1, df_workshop2, on='Name', how='outer', suffixes=('_workshop1', '_workshop2'))
+
+# Find names of all students who have attended a single workshop only
+single_workshop_attendees =pd.merge(df1, df2, on='Date', suffixes=('_workshop1', '_workshop2'))
+
+
+print("Names of students who have attended a single workshop only:")
+print(single_workshop_attendees)
