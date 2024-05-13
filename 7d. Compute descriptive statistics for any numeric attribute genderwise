@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Load Titanic dataset
+titanic_df = pd.read_csv("titanic.csv")
+
+# Check the available columns and their data types
+print(titanic_df.info())
+
+# Assuming you want to analyze the 'Age' attribute gender-wise
+numeric_attribute = 'Age'
+
+# Compute descriptive statistics gender-wise
+statistics_genderwise = titanic_df.groupby('Sex')[numeric_attribute].describe()
+
+print("\nDescriptive statistics for '{}' gender-wise:\n".format(numeric_attribute))
+print(statistics_genderwise)
