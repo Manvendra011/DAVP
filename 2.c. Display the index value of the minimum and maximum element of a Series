@@ -1,0 +1,6 @@
+import pandas as pd
+
+min_index_value = series_b.idxmin()
+max_index_value = series_b.idxmax()
+print("\nIndex value of minimum element:", min_index_value)
+print("Index value of maximum element:", max_index_value)
