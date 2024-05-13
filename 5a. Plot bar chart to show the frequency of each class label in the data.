@@ -1,0 +1,21 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load Iris dataset from sklearn
+iris_data = load_iris()
+iris_df = pd.DataFrame(data=iris_data.data, columns=iris_data.feature_names)
+iris_df['target'] = iris_data.target
+
+# Map target names to their respective labels
+target_names = {0: 'setosa', 1: 'versicolor', 2: 'virginica'}
+iris_df['target'] = iris_df['target'].map(target_names)
+
+# Plot bar chart to show the frequency of each class label
+plt.figure(figsize=(8, 6))
+sns.countplot(data=iris_df, x='target')
+plt.title('Frequency of Each Class Label in Iris Dataset')
+plt.xlabel('Class Label')
+plt.ylabel('Frequency')
+plt.show()
