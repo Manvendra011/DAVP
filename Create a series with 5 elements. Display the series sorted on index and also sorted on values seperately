@@ -1,0 +1,12 @@
+import pandas as pd
+
+# a. Create a series with 5 elements. Display the series sorted on index and also sorted on values separately
+series_a = pd.Series([3, 1, 5, 2, 4], index=['e', 'b', 'c', 'a', 'd'])
+
+# Sorted on index
+sorted_by_index = series_a.sort_index()
+print("Sorted Series by Index:\n", sorted_by_index)
+
+# Sorted on values
+sorted_by_values = series_a.sort_values()
+print("\nSorted Series by Values:\n", sorted_by_values)
