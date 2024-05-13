@@ -1,0 +1,28 @@
+import numpy as np
+import pandas as pd
+
+# Define the size of the DataFrame
+num_rows = 50
+num_cols = 3
+
+# Generate random numeric data for the DataFrame
+data = np.random.rand(num_rows, num_cols)
+
+# Convert the data to a DataFrame
+df = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+
+# Generate random indices to replace 10% of the values with null
+num_values_to_replace = int(0.1 * num_rows * num_cols)
+replace_indices = np.random.choice(df.index, num_values_to_replace, replace=False)
+replace_columns = np.random.choice(df.columns, num_values_to_replace, replace=True)
+
+# Replace the values at random indices with null values
+for idx, col in zip(replace_indices, replace_columns):
+    df.at[idx, col] = np.nan
+
+# Identify and count missing values in the DataFrame
+missing_values_count = df.isnull().sum().sum()
+
+print("DataFrame with missing values:")
+print(df)
+print("\nTotal missing values:", missing_values_count)
