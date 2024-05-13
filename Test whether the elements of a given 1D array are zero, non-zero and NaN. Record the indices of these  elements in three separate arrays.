@@ -1,0 +1,14 @@
+import numpy as np
+
+# Define the given 1D array
+given_array = np.array([1, 0, 5, np.nan, 8, 0, np.nan])
+
+# Test whether elements are zero, non-zero, and NaN
+zero_indices = np.where(given_array == 0)[0]
+non_zero_indices = np.where(given_array != 0)[0]
+nan_indices = np.where(np.isnan(given_array))[0]
+
+# Print the indices of zero, non-zero, and NaN elements
+print("Indices of zero elements:", zero_indices)
+print("Indices of non-zero elements:", non_zero_indices)
+print("Indices of NaN elements:", nan_indices)
