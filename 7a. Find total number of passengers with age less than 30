@@ -1,0 +1,9 @@
+import seaborn as sns
+
+# Load the Titanic dataset from seaborn
+titanic_df = sns.load_dataset('titanic')
+
+# Find total number of passengers with age less than 30
+passengers_under_30 = titanic_df[titanic_df['age'] < 30]['age'].count()
+
+print("Total number of passengers with age less than 30:", passengers_under_30)
