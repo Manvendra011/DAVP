@@ -1,0 +1,17 @@
+import pandas as pd
+
+# Load data from the first Excel file into a DataFrame
+file1_path = "workshop1_attendance.xlsx"
+df1 = pd.read_excel(file1_path)
+
+# Load data from the second Excel file into another DataFrame
+file2_path = "workshop2_attendance.xlsx"
+df2 = pd.read_excel(file2_path)
+
+# Merge the two data frames row-wise
+merged_df = pd.concat([df1, df2], ignore_index=True)
+
+# Find the total number of records in the merged data frame
+total_records = len(merged_df)
+
+print("Total number of records in the merged data frame:", total_records)
