@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.datasets import load_iris
+from sklearn.linear_model import LinearRegression
+
+# Load Iris dataset
+iris = load_iris()
+data = iris.data
+target = iris.target
+feature_names = iris.feature_names
+
+# Create DataFrame
+import pandas as pd
+iris_df = pd.DataFrame(data, columns=feature_names)
+
+# Plot Petal width vs Sepal width
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='sepal width (cm)', y='petal width (cm)', data=iris_df, hue=target, palette='viridis', legend='full')
+
+# Fit a regression line
+regression_model = LinearRegression()
+regression_model.fit(iris_df[['sepal width (cm)']], iris_df['petal width (cm)'])
+plt.plot(iris_df['sepal width (cm)'], regression_model.predict(iris_df[['sepal width (cm)']]), color='red')
+
+# Set labels and title
+plt.xlabel('Sepal Width (cm)')
+plt.ylabel('Petal Width (cm)')
+plt.title('Scatter Plot: Petal Width vs Sepal Width with Regression Line')
+plt.legend(title='Species', loc='upper left')
+
+# Show plot
+plt.grid(True)
+plt.tight_layout()
+plt.show()
