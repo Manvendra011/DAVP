@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Path to the Excel files in your Google Drive
+file_path1 = '/content/workshop1.xlsx'
+file_path2 = '/content/workshop2.xlsx'
+
+# Load the data from Excel files into two data frames
+df1 = pd.read_excel(file_path1)
+df2 = pd.read_excel(file_path2)
+
+# Merge the two data frames based on the 'Name' column
+merged_df = pd.merge(df1, df2, on='Name', suffixes=('_workshop1', '_workshop2'))
+
+# Display the names of students who attended both workshops
+both_workshops_attendees = merged_df['Name'].tolist()
+print("Names of students who attended both workshops:\n", both_workshops_attendees)
