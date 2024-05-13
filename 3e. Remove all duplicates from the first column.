@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+
+# Generate random data for the dataframe
+data = {'Column1': np.random.rand(50),
+        'Column2': np.random.rand(50),
+        'Column3': np.random.rand(50)}
+
+# Create a dataframe
+df = pd.DataFrame(data)
+
+# Generate random index positions to replace with null values
+null_indices = np.random.choice(df.index, size=int(0.1 * len(df)), replace=False)
+
+# Replace values at random indices with NaN
+df.loc[null_indices, ['Column1', 'Column2', 'Column3']] = np.nan
+
+# Remove duplicates from the first column
+df = df.drop_duplicates(subset=['Column1'])
+
+# Print the dataframe
+print("DataFrame after removing duplicates from the first column:")
+print(df)
