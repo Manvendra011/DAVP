@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with at least 3 columns and 50 rows of numeric data
+data = np.random.rand(50, 3)
+df = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+
+# Replace 10% of the values with null values at random index positions
+num_nulls = int(0.1 * df.size)  # 10% of total values
+null_indices = np.random.choice(df.index, num_nulls, replace=False)  # Randomly choose index positions
+df.values[null_indices] = np.nan  # Replace values at selected indices with NaN
+
+# Drop the column(s) having more than 5 null values
+columns_to_drop = df.columns[df.isnull().sum() > 5]
+df = df.drop(columns=columns_to_drop)
+
+print("DataFrame after dropping columns with more than 5 null values:")
+print(df)
