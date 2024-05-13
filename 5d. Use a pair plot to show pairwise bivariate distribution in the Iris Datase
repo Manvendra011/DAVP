@@ -1,0 +1,18 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+iris_df = sns.load_dataset("iris")
+
+# Plot pair plot
+sns.pairplot(iris_df, hue="species", markers=["o", "s", "D"])
+
+# Set labels and title
+plt.xlabel("Features")
+plt.ylabel("Features")
+plt.suptitle("Pairwise Bivariate Distribution in the Iris Dataset")
+
+# Show the plot
+plt.show()
