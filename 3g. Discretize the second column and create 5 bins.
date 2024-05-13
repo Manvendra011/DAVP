@@ -1,0 +1,19 @@
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with 3 columns and 50 rows of random numeric data
+data = np.random.rand(50, 3)
+df = pd.DataFrame(data, columns=['Column1', 'Column2', 'Column3'])
+
+# Generate random indices to replace 10% of values with NaN
+num_rows = df.shape[0]
+num_to_replace = int(0.1 * num_rows)
+replace_indices = np.random.choice(num_rows, num_to_replace, replace=False)
+df.iloc[replace_indices] = np.nan
+
+# Discretize the second column into 5 bins
+df['Column2_discretized'] = pd.cut(df['Column2'], bins=5)
+
+print("Original DataFrame:")
+print(df.head())
+
