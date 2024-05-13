@@ -1,0 +1,18 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+# Load the Iris dataset
+iris = load_iris()
+iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+
+# Plot density distribution for feature 'petal length'
+sns.set(style="whitegrid")
+plt.figure(figsize=(8, 6))
+sns.kdeplot(iris_df['petal length (cm)'], shade=True, color="b", label="Petal Length")
+plt.title("Density Distribution of Petal Length")
+plt.xlabel("Petal Length (cm)")
+plt.ylabel("Density")
+plt.legend()
+plt.show()
