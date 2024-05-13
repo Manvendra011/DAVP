@@ -1,0 +1,26 @@
+import numpy as np
+
+# Create three random arrays of the same size
+size = 10  # Adjust size as needed
+Array1 = np.random.rand(size)
+Array2 = np.random.rand(size)
+Array3 = np.random.rand(size)
+
+# Subtract Array2 from Array3 and store in Array4
+Array4 = Array3 - Array2
+
+# Create Array5 having two times the values in Array1
+Array5 = 2 * Array1
+
+# Find covariance and correlation of Array1 with Array4 and Array5 respectively
+covariance_Array1_Array4 = np.cov(Array1, Array4)[0, 1]
+correlation_Array1_Array4 = np.corrcoef(Array1, Array4)[0, 1]
+
+covariance_Array1_Array5 = np.cov(Array1, Array5)[0, 1]
+correlation_Array1_Array5 = np.corrcoef(Array1, Array5)[0, 1]
+
+print("Covariance between Array1 and Array4:", covariance_Array1_Array4)
+print("Correlation between Array1 and Array4:", correlation_Array1_Array4)
+
+print("Covariance between Array1 and Array5:", covariance_Array1_Array5)
+print("Correlation between Array1 and Array5:", correlation_Array1_Array5)
