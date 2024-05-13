@@ -1,0 +1,32 @@
+import numpy as np
+
+# Function to create and reshape the array
+def create_and_reshape_array(m, n):
+    # Create a 2D array of size m x n with random integer elements
+    array = np.random.randint(0, 10, size=(m, n))
+    
+    # Print original array details
+    print("Original array:")
+    print(array)
+    print("Shape:", array.shape)
+    print("Type:", type(array))
+    print("Data type:", array.dtype)
+    
+    # Reshape the array into an n x m array
+    reshaped_array = np.reshape(array, (n, m))
+    
+    # Print reshaped array
+    print("\nReshaped array:")
+    print(reshaped_array)
+    print("Shape:", reshaped_array.shape)
+    print("Type:", type(reshaped_array))
+    print("Data type:", reshaped_array.dtype)
+
+# Main program
+if __name__ == "__main__":
+    # Get user inputs for m and n
+    m = int(input("Enter the number of rows (m): "))
+    n = int(input("Enter the number of columns (n): "))
+    
+    # Call the function to create and reshape the array
+    create_and_reshape_array(m, n)
